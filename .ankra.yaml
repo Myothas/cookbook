@@ -1,0 +1,18 @@
+stages:
+  build:
+    - image
+
+variables:
+  - name: TARGET
+    value: "dev"
+    description: "Target cluster to deploy to"
+
+build:
+  target:
+    match:
+      name: $TARGET  
+  image:
+    docker:
+      actions:
+        - action: build
+          tag: $COMMIT_ID
