@@ -4,5 +4,5 @@ timeout = 420
 reload = "true"
 accesslog = "-"
 loglevel = "info"
-# pythonpath = "/opt/src"
+pythonpath = "/opt/src"
 threads = 24
