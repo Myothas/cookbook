@@ -1,6 +1,8 @@
 stages:
   build:
     - image
+  deploy:
+    - cookbook
 
 variables:
   - name: TARGET
@@ -16,3 +18,14 @@ build:
       actions:
         - action: build
           tag: $COMMIT_ID
+deploy:
+  target:
+    match:
+      name: $TARGET
+  cookbook:
+    kubernetes:
+      actions:
+        - action: deploy
+          name: cookbook
+          public: true
+          framework: flask
