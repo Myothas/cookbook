@@ -22,6 +22,13 @@ def create_app() -> Flask:
 
 
 def initialize_blueprints(app: object) -> None:
+    # Base Blueprints
+    from base import (
+        base_bp
+    )
+    app.register_blueprint(
+        base_bp
+    )
     # Recipe Blueprints
     from recipes import (
         recipes_bp
