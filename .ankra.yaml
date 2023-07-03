@@ -3,6 +3,8 @@ stages:
     - image
   deploy:
     - cookbook
+    - test
+    - finish
 
 variables:
   - name: TARGET
@@ -23,9 +25,18 @@ deploy:
     match:
       name: $TARGET
   cookbook:
+    async: true
     kubernetes:
       actions:
         - action: deploy
           name: cookbook
           public: true
           framework: flask
+  test:
+    script:
+      commands:
+        - echo "Testing"
+  finish:
+    script:
+      commands:
+        - echo "Finished"
